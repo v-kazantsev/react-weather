@@ -10,8 +10,15 @@ export default styled.div`
     color: teal;
     text-transform: uppercase;
     padding-left: 2em;
-  };
+  }
+  hr {
+    border: 0;
+    margin: 0 2em 3em;
+    width: 90%;
+    height: 2px;
+    background: teal;
+  }
   p {
-    padding-left: 1em;
+    padding-left: 2em;
   }
 `;

@@ -10,4 +10,5 @@ export default styled.input`
   font-size: 1.5rem;
   padding: 0.8em;
   background: powderblue;
+  outline: none;
 `;
