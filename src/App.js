@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import 'App.css';
 import Header from 'components/Header';
-import { Container, Card, Spinner, Error }  from 'elements';
+import { Spinner, Error }  from 'elements';
+import Container from 'components/Container';
 import { API_KEY } from './.API_KEY';
 
 class App extends Component {
@@ -27,14 +28,16 @@ class App extends Component {
     this.setState({
       value: '',
       weatherData: {
-      ...this.state.weatherData,
-      name: data.name,
-      temperature: data.main.temp,
-      pressure: data.main.pressure,
-      humidity: data.main.humidity,
-      description: data.weather[0].description
-    }});
-    this.setState({isLoading: false, error: ''});
+        ...this.state.weatherData,
+        name: data.name,
+        temperature: data.main.temp,
+        pressure: data.main.pressure,
+        humidity: data.main.humidity,
+        description: data.weather[0].description
+      },
+      isLoading: false,
+      error: ''
+  })
   } else {
     this.setState({value: '', isLoading: false, error: 'City not found'});
   }}
@@ -43,7 +46,6 @@ class App extends Component {
     this.setState({value: event.target.value});
   };
   render() {
-    const {temperature, pressure, humidity, description} = this.state.weatherData;
     return (
       <div>
         <Header
@@ -51,20 +53,11 @@ class App extends Component {
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
         />
-        <Container>
           {this.state.isLoading
           ? <Spinner />
           : (this.state.error && <Error>Error: {this.state.error}</Error>) ||
-            (this.state.weatherData.name && <Card>
-              <h3>{this.state.weatherData.name}</h3>
-              <hr/>
-              <p>Temperature: {temperature}&deg;C</p>
-              <p>Pressure: {pressure}</p>
-              <p>Humidity: {humidity}%</p>
-              <p>Condition: {description}</p>
-            </Card>)
+            <Container weatherData = {this.state.weatherData} />
           }
-        </Container>
       </div>
     );
   }
