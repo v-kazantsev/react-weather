@@ -28,6 +28,7 @@ class Container extends React.Component {
           <p>Temperature: {weatherData.temperature}&deg;C</p>
           <p>Pressure: {weatherData.pressure}</p>
           <p>Humidity: {weatherData.humidity}%</p>
+          <p>Wind: {weatherData.wind}m/s</p>
           <p>Condition: {weatherData.description}</p>
         </Card>
         <RightPane />

@@ -33,6 +33,7 @@ class App extends Component {
         temperature: data.main.temp,
         pressure: data.main.pressure,
         humidity: data.main.humidity,
+        wind: data.wind.speed,
         description: data.weather[0].description
       },
       isLoading: false,
