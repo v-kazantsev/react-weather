@@ -1,10 +1,7 @@
 import React from 'react';
 import { NavBar, Input, SubmitButton, SearchForm } from 'elements';
 
-class Header extends React.Component {
-  
-  render() {
-    const {value, onChange, onSubmit} = this.props;
+const Header = ({value, onChange, onSubmit}) => {
     return (
       <NavBar>
         <SearchForm onSubmit = {onSubmit}>
@@ -18,6 +15,5 @@ class Header extends React.Component {
         </SearchForm>
       </NavBar>
     )
-  }
-};
+  };
 export default Header;

@@ -1,11 +1,9 @@
-import NavBar from './NavBar';
-import Input from './Input';
-import SubmitButton from './SubmitButton';
-import SearchForm from './SearchForm';
-import Card from './Card';
-import Spinner from './Spinner';
-import Error from './Error';
-import LeftPane from './LeftPane';
-import RightPane from './RightPane';
-
-export { NavBar, Input, SubmitButton, SearchForm, Card, Spinner, Error, LeftPane, RightPane };
+export { default as NavBar } from './NavBar';
+export { default as Input } from './Input';
+export { default as SubmitButton } from './SubmitButton';
+export { default as SearchForm } from './SearchForm';
+export { default as Card } from './Card';
+export { default as Spinner } from './Spinner';
+export { default as Error } from './Error';
+export { default as LeftPane } from './LeftPane';
+export { default as RightPane } from './RightPane';
