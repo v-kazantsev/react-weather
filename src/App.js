@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'App.css';
 import Header from 'components/Header';
-import { Spinner, Error }  from 'elements';
+import { Error }  from 'elements';
 import Container from 'components/Container';
 import { API_KEY } from './.API_KEY';
 
@@ -22,19 +22,20 @@ class App extends Component {
     event.preventDefault();
     const location = event.target.elements.location.value;
     this.setState({isLoading: true});
-    const apiCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=metric`);
+    const apiCall = await fetch(`https://api.weatherbit.io/v2.0/current?city=${location}&key=${API_KEY}`);
+    console.log(apiCall)
     if (apiCall.ok) {
     const data = await apiCall.json();
     this.setState({
       value: '',
       weatherData: {
         ...this.state.weatherData,
-        name: data.name,
-        temperature: data.main.temp,
-        pressure: data.main.pressure,
-        humidity: data.main.humidity,
-        wind: data.wind.speed,
-        description: data.weather[0].description
+        name: data.data[0].city_name,
+        temperature: data.data[0].temp,
+        pressure: data.data[0].pres,
+        humidity: data.data[0].rh,
+        wind: data.data[0].wind_spd,
+        description: data.data[0].weather.description
       },
       isLoading: false,
       error: ''
@@ -54,11 +55,9 @@ class App extends Component {
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
         />
-          {this.state.isLoading
-          ? <Spinner />
-          : (this.state.error && <Error>Error: {this.state.error}</Error>) ||
-            <Container weatherData = {this.state.weatherData} />
-          }
+          {this.state.error
+           ? <Error>Error: {this.state.error}</Error>
+           : <Container weatherData = {this.state.weatherData} isLoading = {this.state.isLoading} />}
       </div>
     );
   }

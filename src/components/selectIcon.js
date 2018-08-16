@@ -3,19 +3,19 @@ import { Cloudy, Default, Misty, Partly, Rainy, Snow, Sunny, Wind } from 'images
 const selectIcon = (condition) => {
   const str = condition;
   switch (true) {
-    case /clear/.test(str):
+    case /clear/i.test(str):
     return Sunny;
-    case /broken/.test(str):
+    case /cloud/i.test(str):
     return Partly;
-    case /cloud/.test(str):
+    case /scattered/i.test(str):
     return Cloudy;
-    case /mist/.test(str):
+    case /fog/i.test(str):
     return Misty;
-    case /rain/.test(str):
+    case /rain/i.test(str):
     return Rainy;
-    case /snow/.test(str):
+    case /snow/i.test(str):
     return Snow;
-    case /wind/.test(str):
+    case /wind/i.test(str):
     return Wind;
     default:
     return Default;

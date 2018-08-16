@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import img from 'images/plant-bg.jpg';
-import { Card, LeftPane, RightPane } from 'elements';
+import { Card, LeftPane, RightPane, Spinner } from 'elements';
 
 const Columns =  styled.div`
   height: 75vh;
@@ -16,12 +16,14 @@ const Columns =  styled.div`
 
 class Container extends React.Component {
   render() {
-    const {weatherData} = this.props;
-    return (
-      <Columns>
-        {weatherData.name &&
-        (<React.Fragment>
-        <LeftPane condition = {weatherData.description} />
+    const {weatherData, isLoading} = this.props;
+    if (isLoading) {
+      return <Columns><Spinner /></Columns>
+    } else {
+      return (
+        <Columns>
+        { weatherData.description && <LeftPane condition = {weatherData.description} /> }
+        { weatherData.name &&
         <Card>
           <h3>{weatherData.name}</h3>
           <hr/>
@@ -30,11 +32,9 @@ class Container extends React.Component {
           <p>Humidity: {weatherData.humidity}%</p>
           <p>Wind: {weatherData.wind}m/s</p>
           <p>Condition: {weatherData.description}</p>
-        </Card>
-        <RightPane />
-        </React.Fragment>)}
-      </Columns>  
-    )
+        </Card>}
+        { weatherData.name && <RightPane /> }
+        </Columns>)}
   }
 };
 export default Container;
