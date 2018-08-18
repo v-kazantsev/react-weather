@@ -23,7 +23,6 @@ class App extends Component {
     const location = event.target.elements.location.value;
     this.setState({isLoading: true});
     const apiCall = await fetch(`https://api.weatherbit.io/v2.0/current?city=${location}&key=${API_KEY}`);
-    console.log(apiCall)
     if (apiCall.ok) {
     const data = await apiCall.json();
     this.setState({
