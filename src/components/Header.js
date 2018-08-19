@@ -8,7 +8,8 @@ const Header = ({value, onChange, onSubmit}) => {
           <Input
             type="text"
             name="location"
-            placeholder="e.g. Moscow, RU"
+            autofocus="true"
+            placeholder="Enter a city name followed by the country code (optional), e.g. Moscow, RU"
             value={value}
             onChange={onChange} />
           <SubmitButton type="submit" value="Submit" />
