@@ -5,11 +5,8 @@ export default styled.div`
   border: 1px solid red;
   border-radius: 4px;
   color : red;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
-  flex-basis: 50px;
   width: 50%;
   margin: 2em 0.5em;
+  padding 1em 0.5em;
+  text-align: center;
 `;

@@ -47,6 +47,7 @@ class App extends Component {
     this.setState({value: event.target.value});
   };
   render() {
+    const {weatherData, isLoading, error} = this.state;
     return (
       <div>
         <Header
@@ -54,9 +55,7 @@ class App extends Component {
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
         />
-          {this.state.error
-           ? <Error>Error: {this.state.error}</Error>
-           : <Container weatherData = {this.state.weatherData} isLoading = {this.state.isLoading} />}
+        <Container weatherData = {weatherData} isLoading = {isLoading} error = {error} />
       </div>
     );
   }

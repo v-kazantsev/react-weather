@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import img from 'images/plant-bg.jpg';
-import { Card, LeftPane, RightPane, Spinner } from 'elements';
+import { Card, LeftPane, RightPane, Spinner, Error } from 'elements';
 
 const Columns =  styled.div`
   height: 75vh;
@@ -16,9 +16,11 @@ const Columns =  styled.div`
 
 class Container extends React.Component {
   render() {
-    const {weatherData, isLoading} = this.props;
+    const {weatherData, isLoading, error} = this.props;
     if (isLoading) {
       return <Columns><Spinner /></Columns>
+    } else if (error) {
+      return <Columns><Error>{error}</Error></Columns>
     } else {
       return (
         <Columns>
